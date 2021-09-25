@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-                webView.loadUrl("file:///android_asset/e.html");
+                //webView.loadUrl("file:///android_asset/e.html");
                 isInternetConnection();
             }
 /*
