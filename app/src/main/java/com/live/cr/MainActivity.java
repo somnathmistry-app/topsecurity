@@ -1,4 +1,4 @@
-package com.live.topsecurity;
+package com.live.cr;
 //Design and Developed by AICT Pvt. Ltd. (Developer Somnath Mistry)
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     WebView webView;
     RelativeLayout noInternetLayout;
     ConstraintLayout splash;
-    private String baseUrl = "https://topsecurity.online/app/";
+    private String baseUrl = "https://cr.itaxinfo.com/company/registration";
 
     Button retryBtn;
     ProgressBar progressBar;
@@ -73,6 +73,25 @@ public class MainActivity extends AppCompatActivity {
                 super.onReceivedError(view, request, error);
                 //webView.loadUrl("file:///android_asset/e.html");
                 isInternetConnection();
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                boolean overrideUrlLoading = false;
+
+                if (url != null && url.startsWith("whatsapp://")) {
+
+                    view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+
+                    overrideUrlLoading = true;
+
+                } else {
+
+                    view.loadUrl(url);
+                }
+
+                return overrideUrlLoading;
             }
 /*
             @Override
@@ -128,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
             //For Android API >= 21 (5.0 OS)
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {
+
                 uploadMessageAboveL = filePathCallback;
                 openImageChooserActivity();
                 return true;
@@ -236,4 +256,8 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+
+
+
 }

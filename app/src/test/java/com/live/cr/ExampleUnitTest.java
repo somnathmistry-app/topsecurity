@@ -1,4 +1,4 @@
-package com.live.topsecurity;
+package com.live.cr;
 
 import org.junit.Test;
 
